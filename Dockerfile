@@ -2,10 +2,9 @@
 FROM php:7.4-apache
 # Сообщаем, какие порты контейнера слушать
 EXPOSE 80
+EXPOSE 22
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \ 
-    && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
-    && php -r "unlink('composer-setup.php');"
+RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 
 RUN apt-get update
 RUN apt-get install -y \

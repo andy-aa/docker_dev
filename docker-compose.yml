@@ -6,6 +6,7 @@ services:
       context: .
     ports:
       - "8000:80"
+      - "2222:22"
     volumes:
       - ./www:/var/www/html
   db:
